@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paper Digest</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+        svg: { fontCache: "global" }
+      };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </head>
+  <body>
+    <header class="topbar paper-topbar">
+      <div>
+        <p class="eyebrow">Paper digest</p>
+        <h1 id="paper-title">Loading paper...</h1>
+        <p id="paper-subtitle" class="paper-subtitle"></p>
+      </div>
+      <nav class="paper-nav">
+        <a href="index.html">Back to library</a>
+        <a id="paper-doi" target="_blank" rel="noreferrer">DOI</a>
+      </nav>
+    </header>
+
+    <main class="blog-layout">
+      <aside class="blog-sidebar">
+        <section class="filter-panel">
+          <h2>Sections</h2>
+          <a href="#overview">Overview</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#setup">Setup and main result</a>
+          <a href="#example">Simple example</a>
+          <a href="#literature">Literature</a>
+          <a href="#proof">Proof technique</a>
+          <a href="#questions">Open questions</a>
+        </section>
+      </aside>
+
+      <article class="blog-post">
+        <section id="overview" class="blog-section">
+          <div class="paper-meta-row">
+            <span id="paper-status" class="status"></span>
+            <span id="paper-journal-year"></span>
+          </div>
+          <div id="paper-tags" class="tag-row"></div>
+          <p id="paper-takeaway" class="lead"></p>
+          <div id="paper-short"></div>
+        </section>
+
+        <section id="motivation" class="blog-section">
+          <h2>Motivation And Reality Examples</h2>
+          <div id="paper-motivation"></div>
+        </section>
+
+        <section id="setup" class="blog-section">
+          <h2>Setup And Main Result</h2>
+          <div id="paper-deep"></div>
+        </section>
+
+        <section id="example" class="blog-section">
+          <h2>Simple Example</h2>
+          <div id="paper-example"></div>
+        </section>
+
+        <section id="literature" class="blog-section">
+          <h2>Relation To Literature</h2>
+          <div id="paper-literature"></div>
+        </section>
+
+        <section id="proof" class="blog-section">
+          <h2>Proof Technique</h2>
+          <div id="paper-proof"></div>
+        </section>
+
+        <section id="questions" class="blog-section">
+          <h2>Open Questions And Comments</h2>
+          <div id="paper-questions"></div>
+        </section>
+      </article>
+    </main>
+
+    <script src="papers.js"></script>
+    <script src="paper.js"></script>
+  </body>
+</html>
