@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Econ Theory Reading Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+        svg: { fontCache: "global" }
+      };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Literature workspace</p>
+        <h1>Econ Theory Reading Dashboard</h1>
+      </div>
+      <div class="search-wrap">
+        <input id="search" type="search" placeholder="Search papers, authors, tags, journals">
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <section class="filter-panel">
+          <h2>Views</h2>
+          <button class="filter active" data-filter="all">All papers</button>
+          <button class="filter" data-filter="information-acquisition">Information acquisition</button>
+          <button class="filter" data-filter="aggregation">Information aggregation</button>
+          <button class="filter" data-filter="optimal-stopping">Optimal stopping</button>
+          <button class="filter" data-filter="misspecified-learning">Misspecified learning</button>
+          <button class="filter" data-filter="behavioral-learning">Behavioral learning</button>
+          <button class="filter" data-filter="social-learning">Social learning</button>
+          <button class="filter" data-filter="rational-inattention">Rational inattention</button>
+          <button class="filter" data-filter="persuasion">Information design / persuasion</button>
+          <button class="filter" data-filter="working-paper">Working papers</button>
+        </section>
+
+        <section class="filter-panel">
+          <h2>Comparison Pages</h2>
+          <button class="comparison active" data-view="reading-order">Which paper first?</button>
+          <button class="comparison" data-view="timeline">Timeline</button>
+          <button class="comparison" data-view="methods">Methods compared</button>
+          <button class="comparison" data-view="clusters">Papers about X</button>
+        </section>
+      </aside>
+
+      <section class="content">
+        <section id="comparison-view" class="comparison-view"></section>
+        <section class="paper-list-header">
+          <div>
+            <h2 id="list-title">All papers</h2>
+            <p id="paper-count"></p>
+          </div>
+          <select id="sort">
+            <option value="year-desc">Newest first</option>
+            <option value="year-asc">Oldest first</option>
+            <option value="journal">Journal</option>
+            <option value="title">Title</option>
+          </select>
+        </section>
+        <section id="paper-list" class="paper-list"></section>
+      </section>
+    </main>
+
+    <template id="paper-card-template">
+      <article class="paper-card">
+        <div class="paper-meta-row">
+          <span class="status"></span>
+          <span class="journal-year"></span>
+        </div>
+        <h3><a class="paper-title-link"></a></h3>
+        <p class="authors"></p>
+        <p class="takeaway"></p>
+        <div class="tag-row"></div>
+        <div class="actions"></div>
+        <details>
+          <summary>30-second summary</summary>
+          <p class="summary-short"></p>
+        </details>
+        <details>
+          <summary>5-minute explanation</summary>
+          <div class="summary-medium"></div>
+        </details>
+        <details>
+          <summary>Deep dive: setup and result</summary>
+          <div class="deep-dive"></div>
+        </details>
+        <details>
+          <summary>Technical notes, proof ideas, and open questions</summary>
+          <div class="technical"></div>
+        </details>
+      </article>
+    </template>
+
+    <script src="papers.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
