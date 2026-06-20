@@ -115,7 +115,7 @@ function renderPapers() {
     node.querySelector(".status").textContent = displayStatus(paper);
     node.querySelector(".journal-year").textContent = `${paper.sourceType ? `${paper.sourceType}: ` : ""}${paper.journal}, ${paper.year}`;
     const titleLink = node.querySelector(".paper-title-link");
-    titleLink.href = `paper.html?id=${encodeURIComponent(paper.id)}`;
+    titleLink.href = `paper.html?id=${encodeURIComponent(paper.id)}&v=deep61-20260620`;
     titleLink.textContent = paper.title;
     node.querySelector(".authors").textContent = paper.authors;
     node.querySelector(".takeaway").textContent = paper.takeaway;
@@ -144,7 +144,7 @@ function renderPapers() {
     }
 
     const blog = document.createElement("a");
-    blog.href = `paper.html?id=${encodeURIComponent(paper.id)}`;
+    blog.href = `paper.html?id=${encodeURIComponent(paper.id)}&v=deep61-20260620`;
     blog.textContent = "Read digest";
     actions.appendChild(blog);
 
