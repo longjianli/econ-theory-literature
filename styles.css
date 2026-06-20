@@ -264,6 +264,43 @@ select {
   text-decoration: underline;
 }
 
+.digest-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.digest-switch button {
+  width: auto;
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.digest-switch button.active {
+  border-color: #8ebbb3;
+  background: #edf6f3;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.digest-switch button:disabled {
+  color: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.deep-status {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 details {
   margin-top: 8px;
   border-top: 1px solid var(--line);

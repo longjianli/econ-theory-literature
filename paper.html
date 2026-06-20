@@ -49,41 +49,81 @@
           <div id="paper-tags" class="tag-row"></div>
           <p id="paper-takeaway" class="lead"></p>
           <div id="paper-short"></div>
+          <div class="digest-switch" role="group" aria-label="Digest depth">
+            <button id="show-standard" class="active" type="button">Standard digest</button>
+            <button id="show-deep" type="button">Deep academic digest</button>
+          </div>
+          <p id="deep-status" class="deep-status"></p>
         </section>
 
-        <section id="motivation" class="blog-section">
-          <h2>Motivation And Reality Examples</h2>
-          <div id="paper-motivation"></div>
-        </section>
+        <div id="standard-digest">
+          <section id="motivation" class="blog-section">
+            <h2>Motivation And Reality Examples</h2>
+            <div id="paper-motivation"></div>
+          </section>
 
-        <section id="setup" class="blog-section">
-          <h2>Setup And Main Result</h2>
-          <div id="paper-deep"></div>
-        </section>
+          <section id="setup" class="blog-section">
+            <h2>Setup And Main Result</h2>
+            <div id="paper-deep"></div>
+          </section>
 
-        <section id="example" class="blog-section">
-          <h2>Simple Example</h2>
-          <div id="paper-example"></div>
-        </section>
+          <section id="example" class="blog-section">
+            <h2>Simple Example</h2>
+            <div id="paper-example"></div>
+          </section>
 
-        <section id="literature" class="blog-section">
-          <h2>Relation To Literature</h2>
-          <div id="paper-literature"></div>
-        </section>
+          <section id="literature" class="blog-section">
+            <h2>Relation To Literature</h2>
+            <div id="paper-literature"></div>
+          </section>
 
-        <section id="proof" class="blog-section">
-          <h2>Proof Technique</h2>
-          <div id="paper-proof"></div>
-        </section>
+          <section id="proof" class="blog-section">
+            <h2>Proof Technique</h2>
+            <div id="paper-proof"></div>
+          </section>
 
-        <section id="questions" class="blog-section">
-          <h2>Open Questions And Comments</h2>
-          <div id="paper-questions"></div>
-        </section>
+          <section id="questions" class="blog-section">
+            <h2>Open Questions And Comments</h2>
+            <div id="paper-questions"></div>
+          </section>
+        </div>
+
+        <div id="deep-digest" hidden>
+          <section class="blog-section">
+            <h2>0. Detailed Model Setup</h2>
+            <div id="deep-setup"></div>
+          </section>
+
+          <section class="blog-section">
+            <h2>1-2. Main Results And Theorems</h2>
+            <div id="deep-results"></div>
+          </section>
+
+          <section class="blog-section">
+            <h2>3. Concrete / Simple Examples</h2>
+            <div id="deep-example"></div>
+          </section>
+
+          <section class="blog-section">
+            <h2>4. Deep Literature Review And Positioning</h2>
+            <div id="deep-literature"></div>
+          </section>
+
+          <section class="blog-section">
+            <h2>5. Detailed Proof Techniques And Mathematical Tools</h2>
+            <div id="deep-proof"></div>
+          </section>
+
+          <section class="blog-section">
+            <h2>6. Critical Discussion, Open Questions, And Limitations</h2>
+            <div id="deep-critique"></div>
+          </section>
+        </div>
       </article>
     </main>
 
     <script src="papers.js"></script>
+    <script src="deep-digests.js"></script>
     <script src="paper.js"></script>
   </body>
 </html>

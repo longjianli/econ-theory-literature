@@ -586,6 +586,25 @@ function displayStatus(paper) {
   return paper.status === "Queued" ? "Structured Digest" : paper.status;
 }
 
+function deepDigestForPaper(paper) {
+  if (!window.DEEP_DIGESTS) return null;
+  return window.DEEP_DIGESTS[paper.id] || null;
+}
+
+function setDigestMode(mode) {
+  const standard = document.querySelector("#standard-digest");
+  const deep = document.querySelector("#deep-digest");
+  const standardButton = document.querySelector("#show-standard");
+  const deepButton = document.querySelector("#show-deep");
+  const showDeep = mode === "deep";
+
+  standard.hidden = showDeep;
+  deep.hidden = !showDeep;
+  standardButton.classList.toggle("active", !showDeep);
+  deepButton.classList.toggle("active", showDeep);
+  typesetMath();
+}
+
 function renderNotFound() {
   document.title = "Paper not found";
   document.querySelector("#paper-title").textContent = "Paper not found";
@@ -633,6 +652,35 @@ function renderPaper() {
   document.querySelector("#paper-literature").innerHTML = digest.literature;
   document.querySelector("#paper-proof").innerHTML = digest.proof;
   document.querySelector("#paper-questions").innerHTML = digest.questions;
+
+  const deepDigest = deepDigestForPaper(paper);
+  const deepButton = document.querySelector("#show-deep");
+  const deepStatus = document.querySelector("#deep-status");
+  if (deepDigest) {
+    document.querySelector("#deep-setup").innerHTML = deepDigest.setup;
+    document.querySelector("#deep-results").innerHTML = deepDigest.results;
+    document.querySelector("#deep-example").innerHTML = deepDigest.example;
+    document.querySelector("#deep-literature").innerHTML = deepDigest.literature;
+    document.querySelector("#deep-proof").innerHTML = deepDigest.proof;
+    document.querySelector("#deep-critique").innerHTML = deepDigest.critique;
+    deepButton.disabled = false;
+    deepStatus.textContent = "Deep academic digest available.";
+  } else {
+    document.querySelector("#deep-setup").innerHTML = "";
+    document.querySelector("#deep-results").innerHTML = "";
+    document.querySelector("#deep-example").innerHTML = "";
+    document.querySelector("#deep-literature").innerHTML = "";
+    document.querySelector("#deep-proof").innerHTML = "";
+    document.querySelector("#deep-critique").innerHTML = "";
+    deepButton.disabled = true;
+    deepStatus.textContent = "Deep academic digest queued for this paper.";
+  }
+
+  document.querySelector("#show-standard").addEventListener("click", () => setDigestMode("standard"));
+  deepButton.addEventListener("click", () => {
+    if (!deepButton.disabled) setDigestMode("deep");
+  });
+  setDigestMode(deepDigest ? "standard" : "standard");
   typesetMath();
 }
 
