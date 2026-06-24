@@ -6649,5 +6649,142 @@ const PAPERS = [
         <p><strong>My comment.</strong> This is essential for applying persuasion to real institutions. A new paper could combine competition in persuasion with shared-news polarization: competing senders may reveal more facts while also increasing disagreement through different interpretations.</p>
       `,
     },
+  },
+  {
+    id: "bergemann-heumann-morris-2026-info-mech-integrated",
+    title: "Information Design and Mechanism Design: An Integrated Framework",
+    authors: "Dirk Bergemann; Tibor Heumann; Stephen Morris",
+    journal: "arXiv",
+    year: 2026,
+    sourceType: "Working paper",
+    url: "https://arxiv.org/abs/2601.17267",
+    status: "Digested",
+    tags: ["working-paper", "information-design", "persuasion", "auctions", "information-acquisition"],
+    takeaway: "Unifies information design and mechanism design in screening environments by reducing both to linear optimization under majorization constraints, with joint design producing value and allocation pooling.",
+    digest: {
+      short: "Bergemann, Heumann, and Morris give a common mathematical language for information design and mechanism design. In their screening environment, mechanism design chooses allocations weakly majorized by inventory, while information design chooses posterior/value distributions majorized by the prior. Jointly choosing both objects creates a bilinear problem, and the central economic message is that pooling values and allocations is optimal.",
+      motivation: `
+        <p><strong>Motivation.</strong> Screening models ask how a principal allocates goods when agents have private values. Information-design models ask how a designer shapes what agents know. In many real markets, the designer controls both: the platform chooses what information buyers see and what allocation/payment rule will be used.</p>
+        <p><strong>Reality example.</strong> A platform selling advertising slots can choose a targeting report and an auction format. The report changes posterior values; the auction format maps those values into allocations and payments. Treating information and mechanism design separately misses their joint distortion.</p>
+      `,
+      medium: String.raw`
+        <p><strong>Big idea.</strong> The paper shows that screening and information design can both be written as majorization problems. Quantile functions make the analogy sharp: feasible allocations are constrained by inventory, and feasible information structures are constrained by Bayes plausibility expressed through majorization of distributions.</p>
+        <p><strong>Main result in words.</strong> Mechanism design, information design, and joint information-mechanism design are all optimization problems over ordered distributions. When both the mechanism and the information structure are chosen, the solution pools values and associated allocations rather than fully separating types.</p>
+      `,
+      deep: String.raw`
+        <h3>1. Environment</h3>
+        <p>A designer faces a screening environment with quasilinear utility. Agents have values summarized by a type or value distribution. The designer may choose an allocation rule, an information structure, or both.</p>
+        <div class="math">
+          \[
+            v\sim F,\qquad x(v)\in[0,1],\qquad
+            U(v)=v x(v)-t(v).
+          \]
+        </div>
+        <h3>2. Majorization Constraints</h3>
+        <p>The paper's organizing device is majorization. In mechanism design, feasible allocations are weakly majorized by the exogenous inventory. In information design, the induced distribution of posterior values is majorized by the prior distribution.</p>
+        <div class="math">
+          \[
+            x \preceq_{\mathrm{w}} \bar x,
+            \qquad
+            G_{\text{posterior}} \preceq F_{\text{prior}}.
+          \]
+        </div>
+        <p>The designer therefore maximizes a linear functional over distributions subject to order/majorization restrictions rather than separately tracking every signal realization or incentive constraint.</p>
+        <h3>3. Main Result</h3>
+        <div class="theorem-box">
+          <h3>Integrated Design Characterization</h3>
+          <p>Information design and mechanism design reduce to parallel majorization programs. In the joint problem, the designer faces two coupled majorization constraints and a bilinear objective; optimal joint design pools values and associated allocations.</p>
+        </div>
+      `,
+      example: String.raw`
+        <h3>Two-Quantile Screening Example</h3>
+        <p>Suppose a seller has one unit and two buyer quantile regions, low and high. Pure mechanism design chooses an allocation profile \(x_H\ge x_L\) constrained by inventory. Pure information design chooses how much the posterior value distribution spreads around the prior while preserving the mean.</p>
+        <div class="math">
+          \[
+            \mathbb{E}[v\mid s]\ \text{is Bayes plausible},\qquad
+            x_H+x_L\le 1.
+          \]
+        </div>
+        <p>Joint design can deliberately pool nearby values and give them similar allocations. The point is not maximal information revelation; the point is to shape information and allocation together so that screening rents and allocative surplus are balanced.</p>
+      `,
+      technical: String.raw`
+        <p><strong>Contribution to literature.</strong> The paper links Bayesian persuasion/information design, auction theory, and screening through majorization. It extends the Bergemann-Morris information-design program and the classic mechanism-design quantile approach into a single framework.</p>
+        <p><strong>Proof technique.</strong> The main proof engine is a change of variables to quantile functions plus majorization order. This turns incentive and Bayes-plausibility restrictions into distributional inequalities.</p>
+        <p><strong>Useful secondary trick.</strong> Work with ordered quantiles before writing mechanisms. Once feasibility is expressed as majorization, convex-order and rearrangement arguments can replace ad hoc signal-by-signal construction.</p>
+        <p><strong>Open questions.</strong> Natural extensions include multidimensional types, costly information acquisition before screening, robust majorization under misspecified priors, and dynamic mechanisms where today's information design changes tomorrow's type distribution.</p>
+      `,
+    },
+  },
+  {
+    id: "sezer-2026-info-design-uncertain-utilities",
+    title: "Information Design under Uncertain Utilities: Probabilistic and CVaR Approaches",
+    authors: "Furkan Sezer",
+    journal: "arXiv",
+    year: 2026,
+    sourceType: "Working paper",
+    url: "https://arxiv.org/abs/2606.22157",
+    status: "Digested",
+    tags: ["working-paper", "information-design", "persuasion", "aggregation", "finance"],
+    takeaway: "Studies information design when the designer is uncertain about agents' payoff coefficients, using calibrated BCE plus probabilistic and CVaR robustness constraints.",
+    digest: {
+      short: "Sezer studies information design when the designer does not know agents' utility coefficients exactly. The paper introduces calibrated Bayes correlated equilibrium and then imposes probabilistic or CVaR robustness constraints. In linear-quadratic-Gaussian cases, the otherwise difficult design problem becomes tractable through second-order cone and semidefinite reformulations.",
+      motivation: `
+        <p><strong>Motivation.</strong> Standard information design often assumes the designer knows agents' payoff functions. In applications such as financial advice, platform recommendations, or policy communication, the designer may know the structure of payoffs but not the exact utility coefficients.</p>
+        <p><strong>Reality example.</strong> A financial platform sending sector information to investors may know that investors care about risk and return, but not their exact risk tolerance. A signal that is persuasive under one utility vector may violate incentives or expose investors to tail losses under another.</p>
+      `,
+      medium: String.raw`
+        <p><strong>Big idea.</strong> The paper modifies Bayes correlated equilibrium to handle structural uncertainty about utilities. The designer chooses information policies that remain incentive compatible after a calibration/corrector step, then evaluates robustness using either high-probability constraints or CVaR tail constraints.</p>
+        <p><strong>Main result in words.</strong> Under linear-quadratic-Gaussian primitives, robust information design can be reformulated as convex conic programs. Probabilistic designs target average performance subject to chance constraints; CVaR designs put more discipline on adverse utility realizations.</p>
+      `,
+      deep: String.raw`
+        <h3>1. Environment</h3>
+        <p>There are agents with actions \(a\), payoff-relevant state \(\theta\), and payoff coefficients \(\beta\) that are not known exactly by the designer. A recommendation or signal policy induces actions and beliefs, but incentive compatibility must survive uncertainty about \(\beta\).</p>
+        <div class="math">
+          \[
+            u_i(a_i,a_{-i},\theta;\beta_i),
+            \qquad
+            \beta_i\in B_i\ \text{or}\ \beta_i\sim P_i.
+          \]
+        </div>
+        <h3>2. Calibrated BCE</h3>
+        <p>The paper introduces a calibrated Bayes correlated equilibrium. Relative to standard BCE, the designer uses a corrector policy so that recommended actions remain incentive compatible under the utility uncertainty.</p>
+        <div class="math">
+          \[
+            \mathbb{E}_{\pi}\!\left[
+              u_i(a_i,a_{-i},\theta;\beta_i)
+              -
+              u_i(a_i',a_{-i},\theta;\beta_i)
+              \mid a_i
+            \right]\ge 0
+          \]
+        </div>
+        <p>Because \(\beta_i\) is uncertain, the designer imposes this obedience condition through probabilistic or tail-risk constraints.</p>
+        <h3>3. Robust Design Criteria</h3>
+        <div class="theorem-box">
+          <h3>Probabilistic And CVaR Information Design</h3>
+          <p>With linear-quadratic-Gaussian structure, calibrated information design with uncertain utilities admits convex second-order cone and semidefinite formulations. Probabilistic constraints protect obedience with high probability; CVaR constraints discipline expected tail violations.</p>
+        </div>
+      `,
+      example: String.raw`
+        <h3>Two-Investor Signal Example</h3>
+        <p>A platform recommends sector ETF positions. Investor \(i\)'s action is \(a_i\), the state is the payoff vector \(\theta\), and the unknown coefficient \(\beta_i\) captures risk tolerance.</p>
+        <div class="math">
+          \[
+            u_i(a_i,\theta;\beta_i)
+            =
+            a_i\mathbb{E}[\theta\mid s]
+            -
+            \frac{\beta_i}{2}a_i^2.
+          \]
+        </div>
+        <p>A standard design optimized for a point estimate of \(\beta_i\) may recommend too aggressive a position for high-risk-aversion investors. A probabilistic design limits the chance of incentive failure, while a CVaR design puts extra weight on the worst utility-coefficient realizations.</p>
+      `,
+      technical: String.raw`
+        <p><strong>Contribution to literature.</strong> The paper adds robustness to the Bayes-correlated-equilibrium approach to information design, connecting persuasion with robust optimization and financial information design.</p>
+        <p><strong>Proof technique.</strong> The proof converts uncertain obedience inequalities into probabilistic and CVaR constraints. In LQG environments, Gaussian quadratic forms and matrix inequalities turn those constraints into SOCP/SDP formulations.</p>
+        <p><strong>Useful secondary trick.</strong> Separate the recommendation policy from the calibration/corrector policy. This lets the designer preserve a revelation-principle style object even when utilities are structurally uncertain.</p>
+        <p><strong>Open questions.</strong> Extensions include endogenous learning of utility coefficients, strategic misreporting of risk tolerance, robust information design with non-Gaussian tails, and welfare comparisons when the designer is ambiguity averse about preferences.</p>
+      `,
+    },
   }
 ];
