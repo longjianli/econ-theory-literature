@@ -15,6 +15,15 @@ const tagLabels = {
   "rational-inattention": "Rational inattention",
   persuasion: "Persuasion",
   "information-design": "Information design",
+  "robust-contract": "Robust contracts",
+  "robust-mechanism": "Robust mechanisms",
+  "robust-pricing": "Robust pricing",
+  "robust-theory": "Robust theory",
+  "contract-theory": "Contract theory",
+  "information-aggregation": "Information aggregation",
+  "top5-te": "Top 5 / TE",
+  "journal-of-finance": "Journal of Finance",
+  pricing: "Pricing",
   finance: "Finance",
   networks: "Networks",
   voting: "Voting",
@@ -115,7 +124,7 @@ function renderPapers() {
     node.querySelector(".status").textContent = displayStatus(paper);
     node.querySelector(".journal-year").textContent = `${paper.sourceType ? `${paper.sourceType}: ` : ""}${paper.journal}, ${paper.year}`;
     const titleLink = node.querySelector(".paper-title-link");
-    titleLink.href = `paper.html?id=${encodeURIComponent(paper.id)}&v=deep61-quality2-20260620`;
+    titleLink.href = `paper.html?id=${encodeURIComponent(paper.id)}&v=jf-audit-20260623`;
     titleLink.textContent = paper.title;
     node.querySelector(".authors").textContent = paper.authors;
     node.querySelector(".takeaway").textContent = paper.takeaway;
@@ -144,7 +153,7 @@ function renderPapers() {
     }
 
     const blog = document.createElement("a");
-    blog.href = `paper.html?id=${encodeURIComponent(paper.id)}&v=deep61-quality2-20260620`;
+    blog.href = `paper.html?id=${encodeURIComponent(paper.id)}&v=jf-audit-20260623`;
     blog.textContent = "Read digest";
     actions.appendChild(blog);
 
@@ -192,7 +201,7 @@ function renderComparison() {
     clusters: `
       <h2>Papers About X</h2>
       <div class="comparison-grid">
-        ${["information-acquisition", "aggregation", "misspecified-learning", "social-learning", "rational-inattention", "persuasion"].map((tag) => `
+        ${["information-acquisition", "aggregation", "misspecified-learning", "social-learning", "rational-inattention", "persuasion", "robust-contract", "robust-mechanism", "robust-pricing", "journal-of-finance"].map((tag) => `
           <div class="mini-panel">
             <h3>${tagLabels[tag]}</h3>
             <ul>${top(tag).map((p) => `<li>${p.title} (${p.year})</li>`).join("")}</ul>
